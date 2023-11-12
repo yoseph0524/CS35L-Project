@@ -6,7 +6,7 @@ const fetchCoins = async () => {
   return await axios.get(`${BASE_URL}/coins`).then((res) => res.data);
 };
 
-export default function App() {
+export default function Coins() {
   const { isLoading, data } = useQuery("allCoins", fetchCoins);
   console.log(data);
   return (
