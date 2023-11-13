@@ -1,13 +1,18 @@
-"use client";
-import { QueryClient, QueryClientProvider } from "react-query";
-import CoinList from "./coins/page";
-import Coin from "./coins/[coinId]/page";
+import Link from 'next/link'
+import React from 'react'
 
-export default function Home() {
-  const queryClient = new QueryClient();
+function Landing() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <CoinList />
-    </QueryClientProvider>
+    <div>
+      <h1>Hello welcome to our crypto app</h1>
+      <Link href="/Auth/SignUp">Sign Up</Link>
+      <br></br>
+      <Link href="/Auth/SignIn">Sign In</Link>
+      <br></br>
+
+      <Link href="/Home">Home</Link>
+    </div>
   );
 }
+
+export default Landing
