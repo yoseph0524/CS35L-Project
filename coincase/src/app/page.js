@@ -1,13 +1,13 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Coins from "@/pages/_app";
+import CoinList from "./coins/page";
+import Coin from "./coins/[coinId]/page";
 
 export default function Home() {
   const queryClient = new QueryClient();
-
   return (
     <QueryClientProvider client={queryClient}>
-      <Coins />
+      <CoinList />
     </QueryClientProvider>
   );
 }
