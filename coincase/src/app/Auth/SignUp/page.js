@@ -21,10 +21,24 @@ import {
   Divider,
   Center,
   StackDivider,
-
+  NumberInput,
+  NumberInputField,
+  InputLeftElement,
+  InputLeftAddon,
+  Icon,
 } from "@chakra-ui/react";
 
-import { InfoOutlineIcon, CheckIcon, NotAllowedIcon,ViewIcon,ViewOffIcon } from "@chakra-ui/icons";
+import {
+  InfoOutlineIcon,
+  CheckIcon,
+  NotAllowedIcon,
+  ViewIcon,
+  ViewOffIcon,
+  PhoneIcon,
+  EmailIcon,
+} from "@chakra-ui/icons";
+
+import { BsFillPersonVcardFill } from "react-icons/bs";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +59,7 @@ function SignUp() {
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (e.target.name == 'password' && e.target.value !== "") {
+    if (e.target.name == "password" && e.target.value !== "") {
       setFocusPassword(true);
     } else if (e.target.name == "password" && e.target.value === "") {
       setFocusPassword(false);
@@ -77,28 +91,55 @@ function SignUp() {
         <FormControl>
           <VStack spacing={5}>
             <HStack spacing={2} divider={<StackDivider />}>
-              <Input
-                variant="flushed"
-                placeholder="First Name"
-                name="firstName"
-                _placeholder={{ opacity: 0.8, color: "gray.500" }}
-                focusBorderColor="pink.400"
-              />
-              <Input
-                variant="flushed"
-                placeholder="Last Name"
-                name="lastName"
-                _placeholder={{ opacity: 0.8, color: "gray.500" }}
-                focusBorderColor="pink.400"
-              />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={BsFillPersonVcardFill} color="pink.300" />
+                </InputLeftElement>
+                <Input
+                  variant="flushed"
+                  placeholder="First Name"
+                  name="firstName"
+                  _placeholder={{ opacity: 0.8, color: "gray.500" }}
+                  focusBorderColor="pink.400"
+                />
+              </InputGroup>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={BsFillPersonVcardFill} color="pink.300" />
+                </InputLeftElement>
+                <Input
+                  variant="flushed"
+                  placeholder="Last Name"
+                  name="lastName"
+                  _placeholder={{ opacity: 0.8, color: "gray.500" }}
+                  focusBorderColor="pink.400"
+                />
+              </InputGroup>
             </HStack>
-            <Input
-              variant="flushed"
-              placeholder="Email"
-              name="email"
-              _placeholder={{ opacity: 0.8, color: "gray.500" }}
-              focusBorderColor="pink.400"
-            />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <PhoneIcon color="pink.300" />
+              </InputLeftElement>
+              <Input
+                type="tel"
+                placeholder="Phone Number"
+                variant="flushed"
+                _placeholder={{ opacity: 0.8, color: "gray.500" }}
+                focusBorderColor="pink.400"
+              />
+            </InputGroup>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <EmailIcon color="pink.300" />
+              </InputLeftElement>
+              <Input
+                variant="flushed"
+                placeholder="Email"
+                name="email"
+                _placeholder={{ opacity: 0.8, color: "gray.500" }}
+                focusBorderColor="pink.400"
+              />
+            </InputGroup>
             <InputGroup>
               <Input
                 variant="flushed"
@@ -110,8 +151,13 @@ function SignUp() {
                 focusBorderColor="pink.400"
               />
               <InputRightElement>
-                <Button h="1.75rem" size="sm" onClick={handleShow}>
-                  {showPassword ?  <ViewOffIcon/> : <ViewIcon/>}
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleShow}
+                  color="pink.300"
+                >
+                  {showPassword ? <ViewOffIcon /> : <ViewIcon />}
                 </Button>
               </InputRightElement>
             </InputGroup>
@@ -197,7 +243,7 @@ function SignUp() {
               </Box>
             </Collapse>
             <Center>
-              <Button>Submit</Button>
+              <Button colorScheme="pink">Sign Up</Button>
             </Center>
           </VStack>
         </FormControl>
