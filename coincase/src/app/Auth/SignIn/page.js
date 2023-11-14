@@ -27,19 +27,17 @@ import {
   InputLeftAddon,
   Icon,
   AbsoluteCenter,
+  Text
 } from "@chakra-ui/react";
 
 import {
-  InfoOutlineIcon,
-  CheckIcon,
-  NotAllowedIcon,
   ViewIcon,
   ViewOffIcon,
   PhoneIcon,
   EmailIcon,
 } from "@chakra-ui/icons";
 
-import { BsFillPersonVcardFill } from "react-icons/bs";
+import { Link } from "@chakra-ui/next-js";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -135,6 +133,13 @@ function SignUp() {
             </Center>
           </VStack>
         </FormControl>
+        <Text>
+          Don't have an account?{""}
+          <Link href="/Auth/SignUp" color="pink.300">
+            {" "}
+            Create one.
+          </Link>
+        </Text>
       </Container>
     </div>
   );
