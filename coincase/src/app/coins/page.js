@@ -1,15 +1,15 @@
+"use client";
 import { useQuery } from "react-query";
 import Link from "next/link";
 import { fetchCoins } from "../api";
-import QueryProvider from "../queryProvider.js";
 import { CoinPrice } from "./[coinId]/page";
 import { styled } from "styled-components";
 
 const Row = styled.div`
+  margin-left: 10px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   height: 60px;
-  justify-content: center;
 
   align-items: center;
 `;
@@ -18,9 +18,8 @@ const Div = styled.div`
   text-align: center;
   overflow: overlay;
   padding: 0;
-  justify-content: center;
+
   display: flex;
-  align-items: center;
 `;
 
 const NameDiv = styled.div`
@@ -56,7 +55,7 @@ export default function CoinList() {
         </Link>
       </Row>
       {data?.slice(0, 10).map((item) => (
-        <Row>
+        <Row key={item.id}>
           <Div>
             <CoinImg
               src={`https://coinicons-api.vercel.app/api/icon/${item.symbol.toLowerCase()}`}
@@ -75,7 +74,10 @@ export default function CoinList() {
           <Div>
             <CoinPrice params={item.id} type="cap" />
           </Div>
-          <button>Buy</button>
+
+          <button>
+            <Link href={`/coins/${item.id}`}>Buy</Link>
+          </button>
         </Row>
       ))}
     </div>

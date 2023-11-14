@@ -1,3 +1,7 @@
+
+"use client";
+import { QueryClient, QueryClientProvider } from "react-query";
+import CoinList from "./coins/page";
 import Link from 'next/link'
 import React from 'react'
 

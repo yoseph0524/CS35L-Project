@@ -7,17 +7,19 @@ export const fetchCoins = async () => {
 };
 
 export const fetchCoinInfo = async () => {
-  return await axios.get(`${BASE_URL}/coins/${params}`).then((res) => res.data);
+  return await axios
+    .get(`${BASE_URL}/coins/${params.coinId}`)
+    .then((res) => res.data);
 };
 
 export const fetchCoinTickers = async () => {
   return await axios
-    .get(`${BASE_URL}/tickers/${params}`)
+    .get(`${BASE_URL}/tickers/${params.coinId}`)
     .then((res) => res.data);
 };
 
 export const fetchCoinHistory = async () => {
   return await axios
-    .get(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`)
+    .get(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${params.coinId}`)
     .then((res) => res.data);
 };
