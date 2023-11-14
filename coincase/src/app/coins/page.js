@@ -1,3 +1,4 @@
+"use client";
 import { useQuery } from "react-query";
 import Link from "next/link";
 import { fetchCoins } from "../api";
