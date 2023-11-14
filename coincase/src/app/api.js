@@ -14,7 +14,7 @@ export const fetchCoinInfo = async () => {
 
 export const fetchCoinTickers = async () => {
   return await axios
-    .get(`${BASE_URL}/tickers/${params}`)
+    .get(`${BASE_URL}/tickers/${params.coinId}`)
     .then((res) => res.data);
 };
 

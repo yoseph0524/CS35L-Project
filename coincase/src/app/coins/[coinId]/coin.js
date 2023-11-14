@@ -5,7 +5,9 @@ import { useQuery } from "react-query";
 import { styled, keyframes } from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import QueryProvider from "@/app/queryProvider";
+import Chart from "./chart";
+import Price from "./price";
 
 export const StyledLink = styled(Link)`
   display: flex;
@@ -168,7 +170,6 @@ export default function Coin({ params }) {
       .get(`${BASE_URL}/coins/${params.coinId}`)
       .then((res) => res.data);
   };
-
   const { isLoading: infoLoading, data: infoData } = useQuery(
     ["info", { params }],
     () => fetchCoinInfo(params.coinId)
@@ -211,10 +212,20 @@ export default function Coin({ params }) {
             </OverViewItem>
             <OverViewItem>
               <span>Max Supply: </span>
-              <span>{tickersData?.max_supply}</span>
+              <span>
+                {tickersData?.max_supply == 0
+                  ? tickersData?.total_supply
+                  : tickersData?.max_supply}
+              </span>
             </OverViewItem>
           </OverView>
         </OverViewBox>
+        <PriceAndChart>
+          <QueryProvider>
+            <Chart params={coinId} />
+            <Price params={params} />
+          </QueryProvider>
+        </PriceAndChart>
       </ContentWrapper>
     </CoinWrapper>
   );
