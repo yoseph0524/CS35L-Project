@@ -21,9 +21,10 @@ import {
   Divider,
   Center,
   StackDivider,
+
 } from "@chakra-ui/react";
 
-import { InfoOutlineIcon, CheckIcon, NotAllowedIcon } from "@chakra-ui/icons";
+import { InfoOutlineIcon, CheckIcon, NotAllowedIcon,ViewIcon,ViewOffIcon } from "@chakra-ui/icons";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -110,7 +111,7 @@ function SignUp() {
               />
               <InputRightElement>
                 <Button h="1.75rem" size="sm" onClick={handleShow}>
-                  {showPassword ? "Hide" : "Show"}
+                  {showPassword ?  <ViewOffIcon/> : <ViewIcon/>}
                 </Button>
               </InputRightElement>
             </InputGroup>
