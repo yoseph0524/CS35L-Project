@@ -46,9 +46,10 @@ const TitleImg = styled.img`
 
 const ContentWrapper = styled.div`
   display: flex;
-
+  flex-direction: column;
   justify-content: space-evenly;
   margin-top: 5rem;
+  width: fit-content;
 `;
 
 const OverViewBox = styled.div`
@@ -56,7 +57,7 @@ const OverViewBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   margin-right: 25px;
 `;
 
@@ -102,9 +103,8 @@ const Description = styled.div`
 `;
 
 const PriceAndChart = styled.div`
-  flex-basis: 50%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -189,6 +189,12 @@ export default function Coin({ params }) {
         <Title>{isLoading ? "Loading..." : tickersData?.name}</Title>
       </TitleContainer>
       <ContentWrapper>
+        <PriceAndChart>
+          <QueryProvider>
+            <Chart params={params} />
+            <Price params={params} />
+          </QueryProvider>
+        </PriceAndChart>
         <OverViewBox>
           <OverView>
             <OverViewItem>
@@ -220,12 +226,6 @@ export default function Coin({ params }) {
             </OverViewItem>
           </OverView>
         </OverViewBox>
-        <PriceAndChart>
-          <QueryProvider>
-            <Chart params={coinId} />
-            <Price params={params} />
-          </QueryProvider>
-        </PriceAndChart>
       </ContentWrapper>
     </CoinWrapper>
   );
