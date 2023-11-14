@@ -2,7 +2,10 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { keyframes, styled } from "styled-components";
-const PriceContainer = styled.div``;
+const PriceContainer = styled.div`
+  width: fit-content;
+  overflow: overlay;
+`;
 
 const PriceWrapper = styled.div`
   display: flex;
